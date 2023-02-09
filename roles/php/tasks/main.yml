@@ -1,0 +1,17 @@
+---
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Install required software
+  apt: name={{ item }} state=present
+  with_items:
+  - php7.4-cli
+  - php-xml
+  - php-pgsql
+  - libapache2-mod-php
+  - apache2
+  - git
+  - zip
+  - unzip
+  - curl
+  - php-curl

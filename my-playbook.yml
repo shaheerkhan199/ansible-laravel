@@ -1,0 +1,6 @@
+- hosts: practice-laravel-task
+  gather_facts: False
+  roles:
+  - php
+  - composer
+  - laravel

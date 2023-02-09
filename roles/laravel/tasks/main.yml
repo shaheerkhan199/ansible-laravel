@@ -1,0 +1,24 @@
+---
+- name: create laravel project
+  shell: |
+    cd /var/www/
+    rm -rf myapp
+    composer create-project laravel/laravel myapp
+
+- name: set permissions for Laravel storage folder
+  file:
+    state: directory
+    path: /var/www/myapp/storage
+    recurse: yes
+    mode: '0755'
+
+# - name: install laravel dependencies
+#   composer:
+#     command: install
+#     working_dir: /var/www/myapp
+
+- name: setup laravel
+  shell: |
+    cd /var/www/myapp
+    php artisan key:generate
+    php artisan serve
